@@ -1,0 +1,18 @@
+{
+	"name": "choctaw-nation/cno-plugin-responsive-blocks",
+	"description": "A WordPress plugin that adds responsive controls to blocks.",
+	"type": "project",
+	"config": {
+		"allow-plugins": {
+			"composer/installers": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
+	"scripts": {
+		"phpcs": "phpcs --report-full --report-checkstyle=./phpcs-report.xml inc/ cno-plugin-responsive-blocks.php",
+		"phpcbf": "phpcbf inc/ cno-plugin-responsive-blocks.php"
+	},
+	"require-dev": {
+		"wp-coding-standards/wpcs": "*"
+	}
+}
