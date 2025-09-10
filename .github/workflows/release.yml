@@ -45,15 +45,9 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ steps.get_version.outputs.version }}
+          files: cno-plugin-responsive-blocks.zip
           name: ${{ steps.get_version.outputs.version }}
           body: |
             Automated release for version ${{ steps.get_version.outputs.version }}.
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Upload zip to release
-        uses: softprops/action-gh-release@v2
-        with:
-          files: cno-plugin-responsive-blocks.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
