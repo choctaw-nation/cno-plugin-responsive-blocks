@@ -31,22 +31,7 @@ class Plugin_Loader {
 	public function __construct() {
 		$this->build_path = plugin_dir_path( __DIR__ ) . 'build/';
 		$this->build_uri  = plugins_url( 'build/', __DIR__ );
-		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_editor_assets' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_frontend_assets' ) );
-	}
-
-	/**
-	 * Enqueue Frontend Assets
-	 */
-	public function enqueue_frontend_assets() {
-		$file   = 'index';
-		$assets = require $this->build_path . $file . '.asset.php';
-		wp_enqueue_style(
-			'cno-responsive-blocks',
-			$this->build_uri . 'style-index.css',
-			array(),
-			$assets['version']
-		);
+		add_action( 'enqueue_block_assets', array( $this, 'enqueue_editor_assets' ) );
 	}
 
 	/**
@@ -55,6 +40,7 @@ class Plugin_Loader {
 	public function enqueue_editor_assets() {
 		$file   = 'index';
 		$assets = require $this->build_path . $file . '.asset.php';
+
 		wp_enqueue_script(
 			'cno-responsive-blocks',
 			$this->build_uri . $file . '.js',
@@ -62,12 +48,22 @@ class Plugin_Loader {
 			$assets['version'],
 			array( 'strategy' => 'defer' )
 		);
-		wp_enqueue_style(
-			'cno-responsive-blocks',
-			$this->build_uri . $file . '.css',
-			array(),
-			$assets['version']
-		);
+
+		if ( is_admin() ) {
+			wp_enqueue_style(
+				'cno-responsive-blocks',
+				$this->build_uri . $file . '.css',
+				array(),
+				$assets['version']
+			);
+		} else {
+			wp_enqueue_style(
+				'cno-responsive-blocks',
+				$this->build_uri . 'style-index.css',
+				array(),
+				$assets['version']
+			);
+		}
 	}
 
 	/**

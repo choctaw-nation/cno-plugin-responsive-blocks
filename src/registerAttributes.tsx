@@ -1,8 +1,8 @@
 /**
  * Adds needed attributes to blocks
  * @param settings the block settings
- * @param name the name of the block
- * @returns
+ * @param name     the name of the block
+ * @return
  */
 export default function registerAttributes(
 	settings: { attributes: Record< string, any > },

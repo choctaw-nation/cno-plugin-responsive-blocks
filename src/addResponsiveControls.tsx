@@ -37,6 +37,7 @@ export default function addResponsiveControls( namespace: string ) {
 			addFilter( hook, namespace, callback );
 		} );
 	} catch ( error ) {
+		// eslint-disable-next-line no-console
 		console.error( `Error initializing Responsive Controls:`, error );
 	}
 }

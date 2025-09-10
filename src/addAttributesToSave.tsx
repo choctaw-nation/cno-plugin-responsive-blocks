@@ -13,23 +13,9 @@ export default function addAttributesToSave(
 	attributes: any
 ) {
 	try {
-		const { hasResponsiveSettings, responsiveSettings } = attributes;
-		if ( hasResponsiveSettings ) {
-			const responsiveClassNames = generateClassNames( attributes );
-			const classList: string[] = props.className
-				? props.className.split( ' ' )
-				: [];
-			if ( responsiveSettings !== '' ) {
-				classList.push( responsiveClassNames );
-				return {
-					...props,
-					className: classList.join( ' ' ),
-				};
-			}
-		}
+		return { ...props, className: generateClassNames( attributes ) };
 	} catch ( error ) {
+		// eslint-disable-next-line no-console
 		console.error( error );
-	} finally {
-		return props;
 	}
 }
