@@ -1,27 +1,18 @@
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { Fragment } from '@wordpress/element';
+import generateClassNames from './utils/generateClassName';
 /**
  * Adds inline styles to the block in the Editor view
  */
 const addAttributesToEditor = createHigherOrderComponent(
-	( BlockListBlock ) => {
-		return ( props: any ) => {
-			const { attributes, name } = props;
-			if ( name !== 'core/group' ) {
-				return <BlockListBlock { ...props } />;
-			}
-			const { hasResponsiveSettings, responsiveSettings } = attributes;
-			if ( hasResponsiveSettings && responsiveSettings ) {
-			}
-			return (
-				<Fragment>
-					<BlockListBlock
-						{ ...props }
-						wrapperProps={ props.wrapperProps }
-					/>
-				</Fragment>
-			);
-		};
+	( BlockListBlock ) => ( props: any ) => {
+		const { attributes } = props;
+		return (
+			<BlockListBlock
+				{ ...props }
+				className={ generateClassNames( attributes ) }
+			/>
+		);
 	},
 	'addAttributesToEditor'
 );

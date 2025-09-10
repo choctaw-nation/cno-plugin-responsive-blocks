@@ -1,0 +1,56 @@
+name: Release Plugin
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag (e.g. v1.0.0)'
+        required: true
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Extract version from PHP file
+        id: get_version
+        run: |
+          version=$(grep -Eo 'Version: ([0-9]+\.[0-9]+\.[0-9]+)' cno-plugin-responsive-blocks.php | awk '{print $2}')
+          echo "version=$version" >> $GITHUB_OUTPUT
+
+      - name: Build plugin zip
+        run: npm run plugin-zip
+
+      - name: Upload plugin zip as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cno-plugin-responsive-blocks-${{ steps.get_version.outputs.version }}
+          path: plugin-zip/*.zip
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.inputs.tag || github.ref_name }}
+          name: Release ${{ steps.get_version.outputs.version }}
+          body: |
+            Automated release for version ${{ steps.get_version.outputs.version }}.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload zip to release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: plugin-zip/*.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

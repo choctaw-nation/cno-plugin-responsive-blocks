@@ -8,4 +8,5 @@ export type ResponsiveAttributes = {
 		| 'tablet-mobile'
 		| 'mobile-only'
 		| '';
+	className?: string;
 };

@@ -50,7 +50,7 @@ const options = [
 /**
  * Finds the selected option based on the responsive settings.
  * @param responsiveSettings The responsive settings to check.
- * @returns The selected option or the default option.
+ * @return The selected option or the default option.
  */
 function findSelectedOptions(
 	responsiveSettings: ResponsiveAttributes[ 'responsiveSettings' ] | undefined
@@ -70,9 +70,9 @@ function findSelectedOptions(
 const registerControls = createHigherOrderComponent(
 	( BlockEdit ) => ( props ) => {
 		const { attributes, setAttributes, name } = props;
-		const { hasResponsiveSettings } = attributes;
+		const { hasResponsiveSettings, responsiveSettings } = attributes;
 		const selectedOptions = findSelectedOptions(
-			attributes.responsiveSettings
+			responsiveSettings
 		);
 		return (
 			<Fragment>
@@ -96,18 +96,24 @@ const registerControls = createHigherOrderComponent(
 								label="Visibility Settings"
 								value={ selectedOptions }
 								onChange={ ( value ) => {
-									console.log( value );
-									setAttributes( {
-										responsiveSettings:
-											value.selectedItem.key,
-									} );
+									if ( '' === value.selectedItem.key ) {
+										setAttributes( {
+											hasResponsiveSettings: false,
+											responsiveSettings: options[ 0 ],
+										} );
+									} else {
+										setAttributes( {
+											responsiveSettings:
+												value.selectedItem.key,
+										} );
+									}
 								} }
 							/>
 						) }
 					</PanelBody>
 				</InspectorControls>
 			</Fragment>
-		 ) as ReactNode;
+		) as ReactNode;
 	},
 	'registerControls'
 );
