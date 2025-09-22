@@ -1,0 +1,13 @@
+@use './utils' as v;
+@use 'sass:string';
+@use 'sass:map';
+
+.has-responsive-settings {
+    @each $selector, $settings in v.$classes {
+        &.is-visible-at-#{$selector}-size {
+            @media screen and #{string.unquote(map.get($settings,query))} {
+                display: none !important;
+            }
+        }
+    }
+}

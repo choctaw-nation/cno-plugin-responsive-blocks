@@ -1,4 +1,4 @@
-import generateClassNames from './utils/generateClassName';
+import generateClassNames from '../utils/generateClassName';
 
 /**
  * Adds attributes to the save props.

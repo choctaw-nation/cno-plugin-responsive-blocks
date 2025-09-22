@@ -1,0 +1,28 @@
+@use './utils' as v;
+@use 'sass:string';
+@use 'sass:map';
+
+.has-responsive-settings:not(.is-selected,.has-child-selected) {
+	&::after {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		background: rgb(80 0 0 / 70%);
+		color: white;
+		font-size: var(--wp--preset--font-size--xl);
+		text-align: center;
+		align-items: center;
+		justify-content: center;
+		display: flex;
+		z-index: 1;
+	}
+
+	@each $selector, $settings in v.$classes {
+		&.is-visible-at-#{$selector}-size {
+			&::after {
+				content:"Visible on #{map.get($settings,label)}";
+			}
+		}
+	}
+}
