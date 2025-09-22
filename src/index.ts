@@ -3,14 +3,14 @@ import domReady from '@wordpress/dom-ready';
 import { addFilter } from '@wordpress/hooks';
 
 // Callbacks
-import registerAttributes from './registerAttributes';
-import registerControls from './registerControls';
-import addAttributesToSave from './addAttributesToSave';
-import addAttributesToEditor from './addAttributesToEditor';
+import registerAttributes from './callbacks/registerAttributes';
+import registerControls from './callbacks/registerControls';
+import addAttributesToSave from './callbacks/addAttributesToSave';
+import addAttributesToEditor from './callbacks/addAttributesToEditor';
 
 // Styles
-import './editor.scss';
-import './style.scss';
+import './styles/editor.scss';
+import './styles/style.scss';
 
 domReady( () => {
 	const namespace = 'cno';

@@ -8,7 +8,7 @@ Adds responsive controls to WordPress blocks for enhanced layout flexibility.
 
 - Fixed: “Mobile & Tablet” breakpoint is fixed
 - Fixed: Gutenberg classes would sometimes accidentally get removed.
-- Tweak: Refactored `addResponsiveControls.tsx` to `index.ts` for simpler file structure.
+- Tweak: Refactored code to nested directories for clearer file structure.
 - Chore: Update packages
 
 ### v1.0.0 - [September 10, 2025]
