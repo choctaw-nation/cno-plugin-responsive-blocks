@@ -11,7 +11,7 @@ import generateClassNames from '../utils/generateClassName';
  */
 export default function addAttributesToSave(
 	props: any,
-	blockType:any,
+	blockType: any,
 	attributes: any
 ) {
 	try {

@@ -1,10 +1,12 @@
 @use 'sass:map';
 
 $breakpoints: (
-    'desktop': 991.02px,
-    'tablet': 767.02px,
-    'mobile': 576.02px,
+    'desktop': 992px,
+    'tablet': 768px,
+    'mobile': 576px,
 );
+
+// View the readme.md before you mess with this!
 $classes:(
     'desktop-only':(
         query:'(width <= #{map.get($breakpoints, 'desktop')})',
