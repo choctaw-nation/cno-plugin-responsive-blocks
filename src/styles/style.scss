@@ -1,23 +1,11 @@
+@use './utils' as v;
+@use 'sass:string';
 @use 'sass:map';
 
-$breakpoints: (
-    'desktop': 991.02px,
-    'tablet': 767.02px,
-    'mobile': 576.02px,
-);
-$classes:(
-    'desktop-only':'(width <= #{map.get($breakpoints, 'desktop')})',
-    'desktop-tablet':'(width <= #{map.get($breakpoints, 'tablet')})',
-    'desktop-mobile':'( #{map.get($breakpoints, 'mobile')} <= width >= #{map.get($breakpoints, 'desktop')})',
-    'tablet-only':'( #{map.get($breakpoints, 'mobile')} <= width >= #{map.get($breakpoints, 'desktop')})',
-    'tablet-mobile':'(width >= #{map.get($breakpoints, 'desktop')})',
-    'mobile-only':'(width >= #{map.get($breakpoints, 'mobile')})'
-);
-
 .has-responsive-settings {
-    @each $label, $query in $classes {
-        &.is-visible-at-#{$label}-size {
-            @media screen and #{$query} {
+    @each $selector, $settings in v.$classes {
+        &.is-visible-at-#{$selector}-size {
+            @media screen and #{string.unquote(map.get($settings,query))} {
                 display: none !important;
             }
         }
