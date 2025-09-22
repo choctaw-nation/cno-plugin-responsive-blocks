@@ -5,7 +5,6 @@ const config = {
 	...defaultConfig,
 	entry: {
 		...defaultConfig.entry(),
-		view: `./src/view/animation-fallback.ts`,
 	},
 	plugins: [
 		...defaultConfig.plugins,
