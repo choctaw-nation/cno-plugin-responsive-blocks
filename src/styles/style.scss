@@ -10,7 +10,7 @@ $classes:(
     'desktop-tablet':'(width <= #{map.get($breakpoints, 'tablet')})',
     'desktop-mobile':'( #{map.get($breakpoints, 'mobile')} <= width >= #{map.get($breakpoints, 'desktop')})',
     'tablet-only':'( #{map.get($breakpoints, 'mobile')} <= width >= #{map.get($breakpoints, 'desktop')})',
-    'tablet-mobile':'(width >= #{map.get($breakpoints, 'tablet')})',
+    'tablet-mobile':'(width >= #{map.get($breakpoints, 'desktop')})',
     'mobile-only':'(width >= #{map.get($breakpoints, 'mobile')})'
 );
 
