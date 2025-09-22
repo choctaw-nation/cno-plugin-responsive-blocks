@@ -3,7 +3,7 @@
  * Plugin Name: CNO Responsive Blocks
  * Plugin URI: https://github.com/choctaw-nation/cno-plugin-responsive-blocks
  * Description: Adds some responsive controls to blocks.
- * Version: 1.0.1
+ * Version: 1.1.1
  * Author: Choctaw Nation of Oklahoma
  * Author URI: https://www.choctawnation.com
  * Text Domain: cno

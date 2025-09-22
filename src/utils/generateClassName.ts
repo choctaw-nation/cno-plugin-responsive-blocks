@@ -1,36 +1,38 @@
 import { ResponsiveAttributes } from './types';
 
 export default function generateClassNames(
-	attributes: ResponsiveAttributes
+	attributes: ResponsiveAttributes,
 ): string {
 	const classList: string[] = attributes.className
 		? attributes.className.split( ' ' )
 		: [];
 	const { hasResponsiveSettings, responsiveSettings } = attributes;
 	if ( ! hasResponsiveSettings ) {
-		return classList.join( ' ' );
+		return removeResponsiveClasses( classList );
 	}
-	if ( '' !== responsiveSettings ) {
+	if ( hasResponsiveSettings && responsiveSettings ) {
 		if ( ! classList.includes( 'has-responsive-settings' ) ) {
 			classList.push( `has-responsive-settings` );
 		}
 		const isVisibleAtSize = `is-visible-at-${ responsiveSettings }-size`;
-		const existingClass = classList.find( ( cls ) =>
+		const existingClasses = classList.filter( ( cls ) =>
 			cls.startsWith( 'is-visible-at-' )
 		);
-		if ( existingClass ) {
-			const index = classList.indexOf( existingClass );
+		if ( existingClasses.length > 0 ) {
+			const index = classList.indexOf( existingClasses[ 0 ] );
 			classList[ index ] = isVisibleAtSize;
 		} else {
 			classList.push( isVisibleAtSize );
 		}
 	} else {
-		const classes = classList
-			.filter( ( cls ) =>
-				! cls.startsWith( 'is-visible-at-' )
-			)
-			.filter( ( cls ) => 'has-responsive-settings' !== cls );
-		return classes.join( ' ' );
+		return removeResponsiveClasses( classList );
 	}
 	return classList.join( ' ' );
+}
+
+function removeResponsiveClasses( classList: string[] ):string {
+	const filteredClasses = classList
+		.filter( ( cls ) => ! cls.startsWith( 'is-visible-at-' ) )
+		.filter( ( cls ) => 'has-responsive-settings' !== cls );
+	return filteredClasses.join( ' ' );
 }
