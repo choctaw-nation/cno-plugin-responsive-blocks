@@ -1,6 +1,6 @@
 import { createHigherOrderComponent } from '@wordpress/compose';
-import { Fragment } from '@wordpress/element';
-import generateClassNames from './utils/generateClassName';
+import generateClassNames from '../utils/generateClassName';
+
 /**
  * Adds inline styles to the block in the Editor view
  */

@@ -7,7 +7,7 @@ import {
 } from '@wordpress/components';
 import { Fragment } from '@wordpress/element';
 import { ReactNode } from 'react';
-import { ResponsiveAttributes } from './utils/types';
+import { ResponsiveAttributes } from '../utils/types';
 
 const options = [
 	{
@@ -38,7 +38,7 @@ const options = [
 	{
 		key: 'tablet-mobile',
 		name: 'Tablet & Mobile',
-		hint: 'Visible until 768px',
+		hint: 'Visible until 991px',
 	},
 	{
 		key: 'mobile-only',
