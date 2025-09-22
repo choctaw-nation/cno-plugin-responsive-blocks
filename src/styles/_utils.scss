@@ -15,7 +15,7 @@ $classes:(
         label:'Desktop & Tablet'
     ),
     'desktop-mobile':(
-        query:'( #{map.get($breakpoints, 'mobile')} <= width >= #{map.get($breakpoints, 'desktop')})',
+        query:'( #{map.get($breakpoints, 'mobile')} >= width <= #{map.get($breakpoints, 'desktop')})',
         label:'Desktop & Mobile'
     ),
     'tablet-only':(

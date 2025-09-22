@@ -1,7 +1,7 @@
 import { ResponsiveAttributes } from './types';
 
 export default function generateClassNames(
-	attributes: ResponsiveAttributes
+	attributes: ResponsiveAttributes,
 ): string {
 	const classList: string[] = attributes.className
 		? attributes.className.split( ' ' )
@@ -10,7 +10,7 @@ export default function generateClassNames(
 	if ( ! hasResponsiveSettings ) {
 		return removeResponsiveClasses( classList );
 	}
-	if ( '' !== responsiveSettings ) {
+	if ( hasResponsiveSettings && responsiveSettings ) {
 		if ( ! classList.includes( 'has-responsive-settings' ) ) {
 			classList.push( `has-responsive-settings` );
 		}
