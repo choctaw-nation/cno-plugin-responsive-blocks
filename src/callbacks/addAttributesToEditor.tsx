@@ -10,7 +10,7 @@ const addAttributesToEditor = createHigherOrderComponent(
 		return (
 			<BlockListBlock
 				{ ...props }
-				className={ generateClassNames( attributes ) }
+				className={ generateClassNames( attributes, props.className ) }
 			/>
 		);
 	},

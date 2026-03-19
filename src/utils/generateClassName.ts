@@ -1,10 +1,12 @@
 import { ResponsiveAttributes } from './types';
 
 export default function generateClassNames(
-	attributes: ResponsiveAttributes
+	attributes: ResponsiveAttributes,
+	existingClassName?: string
 ): string {
-	const classList: string[] = attributes.className
-		? attributes.className.split( ' ' )
+	const baseClassName = existingClassName ?? attributes.className ?? '';
+	const classList: string[] = baseClassName
+		? baseClassName.split( ' ' )
 		: [];
 	const { hasResponsiveSettings, responsiveSettings } = attributes;
 	if ( ! hasResponsiveSettings ) {
