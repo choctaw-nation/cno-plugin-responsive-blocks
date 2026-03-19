@@ -1,31 +1,33 @@
-@use 'sass:map';
+@use "sass:map";
 
 $breakpoints: (
-    'desktop': 991.02px,
-    'tablet': 767.02px,
-    'mobile': 576.02px,
+	"desktop": 991px,
+	"tablet": 767px,
+	"mobile": 576px,
 );
-$classes:(
-    'desktop-only':(
-        query:'(width <= #{map.get($breakpoints, 'desktop')})',
-        label:'Desktop Only'
-    ),
-    'desktop-tablet':(
-        query:'(width <= #{map.get($breakpoints, 'tablet')})',
-        label:'Desktop & Tablet'
-    ),
-    'desktop-mobile':(
-        query:'( #{map.get($breakpoints, 'mobile')} <= width >= #{map.get($breakpoints, 'desktop')})',
-        label:'Desktop & Mobile'
-    ),
-    'tablet-only':(
-        query:'( #{map.get($breakpoints, 'mobile')} <= width >= #{map.get($breakpoints, 'desktop')})',
-        label:'Tablet Only'
-    ),
-    'tablet-mobile': (
-        query:'(width >= #{map.get($breakpoints, 'desktop')})',
-        label:'Tablet & Mobile'
-    ),
-    'mobile-only':(
-        query:'(width >= #{map.get($breakpoints, 'mobile')})',label:'Mobile Only')
+$classes: (
+	"desktop-only": (
+		query: "(width <= #{map.get($breakpoints, "desktop")})",
+		label: "Desktop Only",
+	),
+	"desktop-tablet": (
+		query: "(width <= #{map.get($breakpoints, "tablet")})",
+		label: "Desktop & Tablet",
+	),
+	"desktop-mobile": (
+		query: "( #{map.get($breakpoints, "mobile")} <= width >= #{map.get($breakpoints, "desktop")})",
+		label: "Desktop & Mobile",
+	),
+	"tablet-only": (
+		query: "( #{map.get($breakpoints, "mobile")} <= width >= #{map.get($breakpoints, "desktop")})",
+		label: "Tablet Only",
+	),
+	"tablet-mobile": (
+		query: "(width >= #{map.get($breakpoints, "desktop")})",
+		label: "Tablet & Mobile",
+	),
+	"mobile-only": (
+		query: "(width >= #{map.get($breakpoints, "mobile")})",
+		label: "Mobile Only",
+	),
 );

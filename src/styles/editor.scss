@@ -1,8 +1,8 @@
-@use './utils' as v;
-@use 'sass:string';
-@use 'sass:map';
+@use "./utils" as v;
+@use "sass:string";
+@use "sass:map";
 
-.has-responsive-settings:not(.is-selected,.has-child-selected) {
+.has-responsive-settings:not(.is-selected, .has-child-selected) {
 	&::after {
 		position: absolute;
 		inset: 0;
@@ -21,7 +21,7 @@
 	@each $selector, $settings in v.$classes {
 		&.is-visible-at-#{$selector}-size {
 			&::after {
-				content:"Visible on #{map.get($settings,label)}";
+				content: "Visible on #{map.get($settings,label)}";
 			}
 		}
 	}
