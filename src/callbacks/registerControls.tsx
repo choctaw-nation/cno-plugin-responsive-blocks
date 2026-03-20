@@ -70,6 +70,9 @@ function findSelectedOptions(
 const registerControls = createHigherOrderComponent(
 	( BlockEdit ) => ( props ) => {
 		const { attributes, setAttributes, name } = props;
+		if ( name === 'gravityforms/form' ) {
+			return <BlockEdit { ...props } />;
+		}
 		const { hasResponsiveSettings, responsiveSettings } = attributes;
 		const selectedOptions = findSelectedOptions(
 			responsiveSettings
