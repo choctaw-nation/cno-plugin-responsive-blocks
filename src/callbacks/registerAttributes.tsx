@@ -8,6 +8,9 @@ export default function registerAttributes(
 	settings: { attributes: Record< string, any > },
 	name: string
 ): {} {
+	if ( name === 'gravityforms/form' ) {
+		return settings;
+	}
 	settings.attributes = {
 		...settings.attributes,
 		hasResponsiveSettings: {

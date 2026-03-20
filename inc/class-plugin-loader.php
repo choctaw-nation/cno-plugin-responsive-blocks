@@ -31,6 +31,14 @@ class Plugin_Loader {
 	public function __construct() {
 		$this->build_path = plugin_dir_path( __DIR__ ) . 'build/';
 		$this->build_uri  = plugins_url( 'build/', __DIR__ );
+	}
+
+	/**
+	 * Initializes the Plugin
+	 *
+	 * @return void
+	 */
+	public function init(): void {
 		add_action( 'enqueue_block_assets', array( $this, 'enqueue_editor_assets' ) );
 	}
 
