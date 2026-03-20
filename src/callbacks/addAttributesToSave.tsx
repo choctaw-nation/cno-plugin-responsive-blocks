@@ -13,9 +13,10 @@ export default function addAttributesToSave(
 	attributes: any
 ) {
 	try {
-		return { ...props, className: generateClassNames( attributes ) };
+		return { ...props, className: generateClassNames( attributes, props.className ) };
 	} catch ( error ) {
 		// eslint-disable-next-line no-console
 		console.error( error );
+		return props;
 	}
 }
