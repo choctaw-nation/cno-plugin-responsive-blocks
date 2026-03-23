@@ -1,6 +1,6 @@
 {
 	"name": "cno-plugin-responsive-blocks",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "A plugin to add responsive controls to blocks",
 	"license": "GPL-3.0-or-later",
 	"author": "Choctaw Nation of Oklahoma",
@@ -15,13 +15,13 @@
 		"readme.md"
 	],
 	"scripts": {
-		"build": "wp-scripts build --blocks-manifest  --webpack-copy-php",
+		"build": "wp-scripts build",
 		"format": "wp-scripts format",
 		"lint:css": "npx stylelint '**/*.scss' '**/*.css' --fix",
 		"lint:js": "npx eslint --fix",
 		"packages-update": "wp-scripts packages-update",
-		"plugin-zip": "wp-scripts build --blocks-manifest && wp-scripts plugin-zip",
-		"start": "wp-scripts start --blocks-manifest  --webpack-copy-php"
+		"plugin-zip": "wp-scripts build && wp-scripts plugin-zip",
+		"start": "wp-scripts start"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^2.0.3",
@@ -44,7 +44,6 @@
 		"react": "^18",
 		"stylelint": "^17.5.0",
 		"stylelint-config-standard-scss": "^17.0.0",
-		"stylelint-scss": "^7.0.0",
-		"webpack-remove-empty-scripts": "^1.1.1"
+		"stylelint-scss": "^7.0.0"
 	}
 }
