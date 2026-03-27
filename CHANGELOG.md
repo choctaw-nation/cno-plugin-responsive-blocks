@@ -3,6 +3,7 @@
 ## v1.0.6 - [March 27, 2026]
 
 - Fixed: Tablet-Mobile breakpoint bug is fixed
+- Fixed: Breakpoint edges (e.g. 991/992) are properly resolved
 
 ## v1.0.5
 
