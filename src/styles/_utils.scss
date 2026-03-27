@@ -3,7 +3,6 @@
 $breakpoints: (
 	"desktop": 992px,
 	"tablet": 768px,
-	"mobile": 576px,
 );
 
 // View the readme.md before you mess with this!
@@ -18,20 +17,20 @@ $classes: (
 	),
 	"desktop-mobile": (
 		query:
-			"( #{map.get($breakpoints, "mobile")} <= width <= #{map.get($breakpoints, "desktop")})",
+			"( #{map.get($breakpoints, "tablet")} <= width <= #{map.get($breakpoints, "desktop")})",
 		label: "Desktop & Mobile",
 	),
 	"tablet-only": (
 		query:
-			"( width <= #{map.get($breakpoints, "mobile")}), (width >= #{map.get($breakpoints, "desktop")})",
+			"( width <= #{map.get($breakpoints, "tablet")}), (width >= #{map.get($breakpoints, "desktop")})",
 		label: "Tablet Only",
 	),
 	"tablet-mobile": (
-		query: "(width >= #{map.get($breakpoints, "desktop")})",
+		query: "(width <= #{map.get($breakpoints, "desktop")})",
 		label: "Tablet & Mobile",
 	),
 	"mobile-only": (
-		query: "(width >= #{map.get($breakpoints, "mobile")})",
+		query: "(width >= #{map.get($breakpoints, "tablet")})",
 		label: "Mobile Only",
 	),
 );
