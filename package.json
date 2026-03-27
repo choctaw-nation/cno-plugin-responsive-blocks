@@ -1,6 +1,6 @@
 {
 	"name": "cno-plugin-responsive-blocks",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"description": "A plugin to add responsive controls to blocks",
 	"license": "GPL-3.0-or-later",
 	"author": "Choctaw Nation of Oklahoma",
@@ -8,6 +8,10 @@
 	"browserslist": [
 		"extends @wordpress/browserslist-config"
 	],
+	"engines": {
+		"npm": "^11",
+		"node": "^24"
+	},
 	"files": [
 		"inc/",
 		"cno-plugin-responsive-blocks.php",
