@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.0.5 - [March 27, 2026]
+
+- Fixed: Breakpoint bug is fixed
+- Chore: Refactored breakpoint declaration in `registerControls` to mirror `styles/_utils.scss` `$breakpoints` map
+
 ## v1.0.4 - [March 20, 2026]
 
 - Refactor: Plugin initializes on `plugins_loaded` hook

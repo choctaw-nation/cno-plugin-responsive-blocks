@@ -9,6 +9,11 @@ import { Fragment } from '@wordpress/element';
 import { ReactNode } from 'react';
 import { ResponsiveAttributes } from '../utils/types';
 
+/** @see `src/styles/_utils.scss $breakpoints` */
+const breakpoints = {
+	desktop: 992,
+	tablet: 768,
+};
 const options = [
 	{
 		key: '',
@@ -18,32 +23,32 @@ const options = [
 	{
 		key: 'desktop-only',
 		name: 'Desktop Only',
-		hint: 'Visible at 991px and above',
+		hint: `Visible at ${ breakpoints.desktop }px and above`,
 	},
 	{
 		key: 'desktop-tablet',
 		name: 'Desktop & Tablet',
-		hint: 'Visible at 768px and above',
+		hint: `Visible at ${ breakpoints.tablet }px and above`,
 	},
 	{
 		key: 'desktop-mobile',
 		name: 'Desktop & Mobile',
-		hint: 'Visible until 576px and then above 991px',
+		hint: `Visible until ${ breakpoints.tablet }px and then above ${ breakpoints.desktop }px`,
 	},
 	{
 		key: 'tablet-only',
 		name: 'Tablet Only',
-		hint: 'Visible between 576px and 991px',
+		hint: `Visible between ${ breakpoints.tablet }px and ${ breakpoints.desktop }px`,
 	},
 	{
 		key: 'tablet-mobile',
 		name: 'Tablet & Mobile',
-		hint: 'Visible until 991px',
+		hint: `Visible until ${ breakpoints.desktop }px`,
 	},
 	{
 		key: 'mobile-only',
 		name: 'Mobile Only',
-		hint: 'Visible until 576px',
+		hint: `Visible until ${ breakpoints.tablet }px`,
 	},
 ];
 
