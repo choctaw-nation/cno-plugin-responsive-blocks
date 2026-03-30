@@ -22,15 +22,15 @@ $classes: (
 	),
 	"tablet-only": (
 		query:
-			"( width <= #{map.get($breakpoints, "tablet")}), (width >= #{map.get($breakpoints, "desktop")})",
+			"( width <= #{map.get($breakpoints, "tablet")}), (width > #{map.get($breakpoints, "desktop")})",
 		label: "Tablet Only",
 	),
 	"tablet-mobile": (
-		query: "(width <= #{map.get($breakpoints, "desktop")})",
+		query: "(width > #{map.get($breakpoints, "desktop")})",
 		label: "Tablet & Mobile",
 	),
 	"mobile-only": (
-		query: "(width >= #{map.get($breakpoints, "tablet")})",
+		query: "(width > #{map.get($breakpoints, "tablet")})",
 		label: "Mobile Only",
 	),
 );

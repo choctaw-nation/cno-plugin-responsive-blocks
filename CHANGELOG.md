@@ -1,6 +1,11 @@
 # Changelog
 
-## v1.0.5 - [March 27, 2026]
+## v1.0.6 - [March 27, 2026]
+
+- Fixed: Tablet-Mobile breakpoint bug is fixed
+- Fixed: Breakpoint edges (e.g. 991/992) are properly resolved
+
+## v1.0.5
 
 - Fixed: Breakpoint bug is fixed
 - Chore: Refactored breakpoint declaration in `registerControls` to mirror `styles/_utils.scss` `$breakpoints` map
