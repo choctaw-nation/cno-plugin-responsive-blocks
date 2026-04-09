@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.0.7 - [April 9, 2026]
+
+- Fixed: block dependencies are properly loaded and not enqueued on the frontend.
+- Chore: Update packages
+
 ## v1.0.6 - [March 27, 2026]
 
 - Fixed: Tablet-Mobile breakpoint bug is fixed
