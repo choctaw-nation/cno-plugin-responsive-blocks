@@ -39,7 +39,23 @@ class Plugin_Loader {
 	 * @return void
 	 */
 	public function init(): void {
-		add_action( 'enqueue_block_assets', array( $this, 'enqueue_editor_assets' ) );
+		add_action( 'enqueue_block_assets', array( $this, 'enqueue_global_assets' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_editor_assets' ) );
+	}
+
+	/**
+	 * Enqueue Global Assets
+	 */
+	public function enqueue_global_assets() {
+		$file    = 'style-index';
+		$assets  = $this->get_asset_file( $file );
+		$version = is_null( $assets ) ? null : $assets['version'];
+		wp_enqueue_style(
+			'cno-responsive-blocks',
+			$this->build_uri . $file . '.css',
+			array(),
+			$version
+		);
 	}
 
 	/**
@@ -47,8 +63,10 @@ class Plugin_Loader {
 	 */
 	public function enqueue_editor_assets() {
 		$file   = 'index';
-		$assets = require $this->build_path . $file . '.asset.php';
-
+		$assets = $this->get_asset_file( $file );
+		if ( is_null( $assets ) ) {
+			return;
+		}
 		wp_enqueue_script(
 			'cno-responsive-blocks',
 			$this->build_uri . $file . '.js',
@@ -64,14 +82,22 @@ class Plugin_Loader {
 				array(),
 				$assets['version']
 			);
-		} else {
-			wp_enqueue_style(
-				'cno-responsive-blocks',
-				$this->build_uri . 'style-index.css',
-				array(),
-				$assets['version']
-			);
 		}
+	}
+
+	/**
+	 * Gets the asset file for a given file
+	 *
+	 * @param string $file The name of the file (without extension)
+	 * @return array The asset file contents
+	 */
+	private function get_asset_file( string $file ): ?array {
+		$path = $this->build_path . $file . '.asset.php';
+
+		if ( ! file_exists( $path ) ) {
+			return null;
+		}
+		return require $path;
 	}
 
 	/**
